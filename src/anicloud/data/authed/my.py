@@ -190,7 +190,9 @@ class MyAccount:
             "website":
                 provided_data.select_one("form input[name=\"website\"]").attrs["value"],
             "username":
-                provided_data.select_one("form input[name=\"username\"]").attrs["value"],
+                provided_data.select_one("form input[name=\"username\"]").attrs["value"]
+                if provided_data.select_one("form input[name=\"username\"]") is not None else
+                provided_data.select_one(".user .name").text.strip(),
             "themeStyle":
                 provided_data.select_one("form input[name=\"themeStyle\"]").has_attr("checked"),
             "emailNotifications":
