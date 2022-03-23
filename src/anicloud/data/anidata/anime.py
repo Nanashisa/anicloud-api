@@ -92,8 +92,8 @@ class Anime:
                 urljoin("https://anicloud.io", self.uri + "/filme")).headers \
             else parse_episode_list(lo.load(urljoin("https://anicloud.io", self.uri)).text)
         i = 1
-        if self.seasons is None:
-            self.seasons = []
+        
+        self.seasons = []
         while "Refresh" not in lo.session.head(urljoin("https://anicloud.io", self.uri + f"/staffel-{i}")).headers:
             self.seasons.append(Season(i, parse_episode_list(lo.load(
                     urljoin("https://anicloud.io", self.uri + f"/staffel-{i}")

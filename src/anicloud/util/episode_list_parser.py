@@ -10,10 +10,6 @@ def parse_episode_list(text: str) -> list[Episode]:
     return [
         Episode(item.select_one("a[itemprop=\"url\"]").attrs["href"],
                 title=item.select_one("td.seasonEpisodeTitle a strong").text,
-                hosters=[
-                    hoster.attrs["title"]
-                    for hoster in item.select("td:not([class]) a i")
-                ],
                 langs=[
                     parse_lang(img.attrs["src"].split("/")[-1].split(".")[0])
                     for img in item.select("td.editFunctions a img.flag")

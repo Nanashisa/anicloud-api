@@ -10,7 +10,7 @@ from ...util.language_parser import parse_lang
 
 class Episode:
     def __init__(self, uri: str, desc: str = None, season: int = None, episode: int = None, title: str = None,
-                 hosters: list[str] = None, langs: list[Language] = None, episode_id: int = None, seen: bool = None):
+                 hosters: list[Hoster] = None, langs: list[Language] = None, episode_id: int = None, seen: bool = None):
         self.id: int = episode_id
         self.seen: bool = seen
         self.season: int = season
@@ -18,7 +18,7 @@ class Episode:
         self.title: str = title
         self.desc: str = desc
         self.uri: str = uri
-        self.hosters: list[str] = hosters
+        self.hosters: list[Hoster] = hosters
         self.langs: list[Language] = langs
         self.loaded = False
     
